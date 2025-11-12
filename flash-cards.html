@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/output.css">
+    <style>
+        .carte{
+            transition: all 0.6s ease;
+            transform-style: preserve-3d;
+            height: 340px;
+        }
+
+        .carte.flipp{
+            transform: rotateY(180deg);
+        }
+
+        #font ,#back{
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        #back{
+            transform: rotateY(180deg);
+        }
+        .container{
+            position: relative;
+            perspective: 1000px;
+        }
+    </style>
+</head>
+<body class="bg-indigo-50 p-11">
+    <div class="flex justify-between">
+        <h1 class="text-4xl font-bold text-blue-900">Stof</h1>
+        <button class="bg-gray-500 text-white px-3 rounded-lg"><a href="create-cards.html">← Retour</a></button>
+    </div>
+
+    <p class="mt-8 text-gray-700">Carte 1 sur 2</p>
+    <div class="container">
+        <div class="carte flex justify-center items-center " id="card">
+            <div id="font" class="bg-white p-26 rounded-2xl shadow-xl mt-3 grid justify-center items-center gap-5 cursor-pointer absolute w-3xl">
+                <p class="text-center text-gray-400">QUESTION</p>
+                <h2 class="text-center font-medium text-2xl">C'est quoi js</h2>
+                <p class="text-center text-gray-400">Cliquez pour voir la réponse</p>
+            </div>
+            <div id="back" class="bg-blue-700 p-26 rounded-2xl shadow-xl mt-3 grid justify-center items-center gap-5 cursor-pointer absolute w-3xl">
+                <p class="text-center text-gray-300">REPONSE</p>
+                <h2 class="text-center font-medium text-2xl text-white">JavaScript</h2>
+                <p class="text-center text-gray-300">Cliquez pour voir la question</p>
+            </div>
+        </div>
+    </div>
+    <div class=" gap-3 mt-6 flex justify-evenly items-center">
+        <button class="bg-gray-300 p-2.5 rounded-lg cursor-pointer w-36"><a href="#">← Précedent</a></button>
+        <button class="bg-blue-600 text-white p-2.5 rounded-lg cursor-pointer w-36"><a href="#">Suivante →</a></button>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        card.addEventListener('click' , ()=>{
+            card.classList.toggle('flipp');
+        })
+    </script>
+</body>
+</html>

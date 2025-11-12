@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/output.css">
+    <style>
+        @media (max-width:800px){
+            #cardsIndex{
+                display: grid;
+                >div{
+                    width: 600px;
+                }
+            }
+        }
+    </style>
+</head>
+<body class="bg-indigo-50">
+
+    <h1 class="text-6xl font-bold text-blue-900 text-center m-9 ">Cards</h1>
+    <p class="text-xl text-gray-700 text-center">Apprenez efficacement avec des flashcards interactives et des quiz</p>
+
+    <div id="cardsIndex" class="flex justify-center mt-10 gap-4 items-center">
+        <a href="create-cards.html">
+            <div class="bg-white w-[400px] text-center p-7 rounded-2xl shadow-xl hover:shadow-2xl duration-200">
+                <div class="text-5xl mb-4">🗂️</div>
+                <h2 class="text-2xl mb-4 font-bold text-blue-900">Flashcards</h2>
+                <p class=" mb-4">Créez et révisez vos collections de cartes</p>
+                <button class="bg-indigo-700 rounded-lg px-4 py-3 text-white font-bold hover:bg-indigo-800 duration-200"><a href="create-cards.html">Accéder aux Flashcards</a></button>
+            </div>
+        </a>
+        <a href="#">
+            <div class="bg-white w-[400px] text-center p-7 rounded-2xl shadow-xl hover:shadow-2xl duration-200 ">
+                <div class="text-5xl mb-4">🎯</div>
+                <h2 class="text-2xl mb-4 font-bold text-blue-900">Quiz</h2>
+                <p class=" mb-4">Testez vos connaissances</p>
+                <button class="bg-green-600 rounded-lg px-4 py-3 text-white font-bold hover:bg-green-800 duration-200"><a href="#">Accéder aux Quiz</a></button>
+            </div>
+        </a>
+    </div>
+    <div class="flex justify-center items-center">
+        <div class="bg-white flex items-center p-5 m-6 rounded-lg shadow-xl">
+            <span id="count-index" class="text-blue-900 font-bold m-2 text-2xl">0</span>
+            <p>collections disponibles</p>
+        </div>
+    </div>
+    
+    <script>
+        const collectionsDispo = document.getElementById('count-index');
+        let countIndex = JSON.parse(localStorage.getItem("collections"))
+        
+        collectionsDispo.textContent = countIndex.length;
+    </script>
+    
+</body>
+</html>
