@@ -12,6 +12,7 @@ if(localStorage.getItem('collections')){
     collections.forEach(coll =>{
         addOption(coll.titre);
     });
+    afficherCount()
 }
 
 function createCollection(){
@@ -46,14 +47,17 @@ function afficherCollection(titre){
     const p = document.getElementById('p')
     if(p)p.remove();
     const newDiv = document.createElement('div');
+    const aId = `link-${titre.replace(/\s+/g , '-')}`
     newDiv.innerHTML = `
-    <a href="flash-cards.html">
-    <div class="border-2 p-4 rounded-lg border-gray-400 hover:border-gray-500 duration-200">
-    <h2 class="text-lg text-blue-900 font-bold">${titre}</h2>
-    <h3 class="text-gray-500"><span id="count-${titre}">0</span> carte</h3>
-    </div>
-    </a>`
-    collectionsDiv.appendChild(newDiv)
+        <a id="${aId}" href="flash-cards.html">
+            <div class="border-2 p-4 rounded-lg border-gray-400 hover:border-gray-500 duration-200">
+                <h2 class="text-lg text-blue-900 font-bold">${titre}</h2>
+                <h3 class="text-gray-500"><span id="count-${titre}">0</span> carte</h3>
+            </div>
+        </a>`
+        collectionsDiv.appendChild(newDiv)
+        const id = document.getElementById(aId)
+        console.log(id)
 }
 
 createCollectionbtn.addEventListener('click' , (e)=>{
@@ -79,16 +83,23 @@ createCarteBtn.addEventListener('click' , (e)=>{
         showError("")
 
         const selectedcoll = collections.find(coll => coll.titre === mySelect.value)
-
         selectedcoll.cards.push({question,reponse})
         localStorage.setItem('collections',JSON.stringify(collections))
+        
         document.getElementById('question').value = ""
         document.getElementById('reponse').value = ""
         document.getElementById('mySelect').value = "null"
-
-
+        
         const countcards = document.getElementById(`count-${selectedcoll.titre}`)
-        let Nbcards = selectedcoll.cards
-        countcards.textContent = Nbcards.length;
+        countcards.textContent = selectedcoll.cards.length;
     }
 }) 
+
+function afficherCount(){
+    collections.forEach(coll=>{
+        const countspan = document.getElementById(`count-${coll.titre}`)
+        if(countspan){
+            countspan.textContent = coll.cards.length
+        }
+    })
+}

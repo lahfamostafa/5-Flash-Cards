@@ -265,6 +265,9 @@
   .w-36 {
     width: calc(var(--spacing) * 36);
   }
+  .w-96 {
+    width: calc(var(--spacing) * 96);
+  }
   .w-\[400px\] {
     width: 400px;
   }
@@ -365,6 +368,9 @@
   }
   .p-7 {
     padding: calc(var(--spacing) * 7);
+  }
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
   }
   .p-11 {
     padding: calc(var(--spacing) * 11);

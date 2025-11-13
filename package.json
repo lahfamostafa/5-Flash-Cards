@@ -1,10 +1,28 @@
 {
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.16",
-    "tailwindcss": "^4.1.16"
+    "@tailwindcss/cli": "^4.1.16"
   },
-
-  "script":{
-    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  "name": "brief5-js-cards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create-cards.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lahfamostafa/5-Flash-Cards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lahfamostafa/5-Flash-Cards/issues"
+  },
+  "homepage": "https://github.com/lahfamostafa/5-Flash-Cards#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.17"
   }
 }
