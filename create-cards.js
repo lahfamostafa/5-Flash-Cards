@@ -47,17 +47,22 @@ function afficherCollection(titre){
     const p = document.getElementById('p')
     if(p)p.remove();
     const newDiv = document.createElement('div');
-    const aId = `link-${titre.replace(/\s+/g , '-')}`
+    const aId = `${titre.replace(/\s+/g , '-')}`
     newDiv.innerHTML = `
         <a id="${aId}" href="flash-cards.html">
+            <!--<h1 id="name-card">${aId}</h1>-->
             <div class="border-2 p-4 rounded-lg border-gray-400 hover:border-gray-500 duration-200">
-                <h2 class="text-lg text-blue-900 font-bold">${titre}</h2>
+                <h2 id="${titre}Carte" class="text-lg text-blue-900 font-bold">${titre}</h2>
                 <h3 class="text-gray-500"><span id="count-${titre}">0</span> carte</h3>
             </div>
         </a>`
         collectionsDiv.appendChild(newDiv)
-        const id = document.getElementById(aId)
-        console.log(id)
+        
+        const aElement = document.getElementById(`${aId}`)
+
+        aElement.addEventListener('click' , ()=>{
+            localStorage.setItem('selected',JSON.stringify(titre))
+        })
 }
 
 createCollectionbtn.addEventListener('click' , (e)=>{
@@ -101,5 +106,8 @@ function afficherCount(){
         if(countspan){
             countspan.textContent = coll.cards.length
         }
-    })
+    })  
 }
+
+// const selected = document.getElementById(`${titre}Carte`)
+// console.log(selected.textContent)
